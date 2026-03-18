@@ -5,182 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #0f172a;
-      color: white;
-      scroll-behavior: smooth;
-    }
-
-    header {
-      padding: 60px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #2563eb, #06b6d4);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 40px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #111;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background: #020617;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
       padding: 15px;
       text-align: center;
+      border-bottom: 1px solid #eee;
     }
 
     nav a {
-      color: white;
-      margin: 0 15px;
+      margin: 0 20px;
       text-decoration: none;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: #38bdf8;
+      color: #111;
+      font-weight: 500;
     }
 
     section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
+      padding: 100px 20px;
+      text-align: center;
     }
 
-    .card {
-      background: #1e293b;
-      padding: 25px;
-      margin: 20px 0;
-      border-radius: 15px;
-      transition: 0.3s;
-      opacity: 0;
-      transform: translateY(30px);
+    .hero {
+      font-size: 48px;
+      font-weight: 600;
     }
 
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
+    .sub {
+      font-size: 20px;
+      color: #555;
+      margin-top: 10px;
     }
 
-    .card:hover {
-      transform: scale(1.02);
-    }
-
-    button {
-      background: #38bdf8;
+    .btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      border-radius: 20px;
       border: none;
-      padding: 12px 18px;
-      color: black;
-      border-radius: 8px;
+      background: black;
+      color: white;
       cursor: pointer;
     }
 
-    button:hover {
-      background: #0ea5e9;
+    .light {
+      background: #f5f5f7;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: none;
+    img {
+      width: 80%;
+      max-width: 800px;
+      margin-top: 30px;
+      border-radius: 20px;
     }
 
     footer {
+      padding: 40px;
       text-align: center;
-      padding: 20px;
-      background: #020617;
+      color: #777;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>My Portfolio 🚀</h1>
-  <p>Future Developer | Building Cool Projects</p>
-  <button onclick="scrollToSection('contact')">Contact Me</button>
-</header>
-
 <nav>
+  <a href="#home">Home</a>
   <a href="#about">About</a>
-  <a href="#projects">Projects</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-  <div class="card">
-    <h2>About Me</h2>
-    <p>I am learning web development and building modern websites.</p>
+<section id="home">
+  <div class="hero">Welcome to My Website</div>
+  <div class="sub">Simple. Clean. Powerful.</div>
+  <button class="btn" onclick="scrollToSection('about')">Learn more</button>
+
+  <img src="https://picsum.photos/1000/500">
+</section>
+
+<section id="about" class="light">
+  <div class="hero">About Me</div>
+  <div class="sub">
+    I build modern, clean, and user-friendly websites inspired by Apple design.
   </div>
 </section>
 
-<section id="projects">
-  <div class="card">
-    <h2>Project 1</h2>
-    <p>This is my first hosted website using GitHub Pages.</p>
+<section>
+  <div class="hero">My Vision</div>
+  <div class="sub">
+    Create simple experiences that feel powerful and beautiful.
   </div>
 
-  <div class="card">
-    <h2>Project 2</h2>
-    <p>More projects coming soon 🚀</p>
-  </div>
+  <img src="https://picsum.photos/900/400">
 </section>
 
-<section id="contact">
-  <div class="card">
-    <h2>Contact Me</h2>
+<section id="contact" class="light">
+  <div class="hero">Contact</div>
 
-    <!-- REAL FORM (FormSubmit) -->
-    <form action="https://formsubmit.co/YOUR-EMAIL-HERE" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-
-  </div>
+  <form action="https://formsubmit.co/YOUR-EMAIL-HERE" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br><br>
+    <input type="email" name="email" placeholder="Your Email" required><br><br>
+    <textarea name="message" placeholder="Your Message"></textarea><br><br>
+    <button class="btn" type="submit">Send</button>
+  </form>
 </section>
 
 <footer>
-  <p>© 2026 My Portfolio</p>
+  © 2026 My Portfolio
 </footer>
 
 <script>
 function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
-
-// Animation on scroll
-const cards = document.querySelectorAll('.card');
-
-function showCards() {
-  const trigger = window.innerHeight * 0.85;
-
-  cards.forEach(card => {
-    const top = card.getBoundingClientRect().top;
-
-    if (top < trigger) {
-      card.classList.add('show');
-    }
-  });
-}
-
-window.addEventListener('scroll', showCards);
-showCards();
-
-// Simple visitor counter
-let count = localStorage.getItem("visits") || 0;
-count++;
-localStorage.setItem("visits", count);
-console.log("Visits:", count);
 </script>
 
 </body>

@@ -3,27 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
+  <title>My Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
-      transition: 0.3s;
+      font-family: 'Poppins', sans-serif;
+      background: #0f172a;
+      color: white;
+      scroll-behavior: smooth;
     }
 
     header {
-      background: #0077ff;
-      color: white;
-      padding: 30px;
+      padding: 60px 20px;
       text-align: center;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 40px;
     }
 
     nav {
-      background: #005fcc;
-      padding: 12px;
+      position: sticky;
+      top: 0;
+      background: #020617;
+      padding: 15px;
       text-align: center;
     }
 
@@ -31,71 +40,63 @@
       color: white;
       margin: 0 15px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: #38bdf8;
     }
 
-    .container {
-      padding: 20px;
-      max-width: 900px;
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
       margin: auto;
     }
 
     .card {
-      background: white;
-      padding: 20px;
+      background: #1e293b;
+      padding: 25px;
       margin: 20px 0;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      transition: 0.3s;
+      opacity: 0;
+      transform: translateY(30px);
     }
 
-    img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: scale(1.02);
     }
 
     button {
-      background: #0077ff;
-      color: white;
+      background: #38bdf8;
       border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
+      padding: 12px 18px;
+      color: black;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 10px;
     }
 
     button:hover {
-      background: #005fcc;
+      background: #0ea5e9;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
     }
 
     footer {
-      background: #222;
-      color: white;
       text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
-
-    /* Dark mode */
-    .dark {
-      background: #111;
-      color: white;
-    }
-
-    .dark .card {
-      background: #222;
-    }
-
-    .dark nav {
-      background: #111;
-    }
-
-    .dark header {
-      background: #000;
+      padding: 20px;
+      background: #020617;
     }
   </style>
 </head>
@@ -103,46 +104,83 @@
 <body>
 
 <header>
-  <h1>Welcome to My Website</h1>
-  <p>This is my upgraded site 🚀</p>
+  <h1>My Portfolio 🚀</h1>
+  <p>Future Developer | Building Cool Projects</p>
+  <button onclick="scrollToSection('contact')">Contact Me</button>
 </header>
 
 <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<div class="container">
-
+<section id="about">
   <div class="card">
     <h2>About Me</h2>
-    <p>Hello! I’m learning web development and building my first website.</p>
-    <img src="https://picsum.photos/800/300">
+    <p>I am learning web development and building modern websites.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="card">
+    <h2>Project 1</h2>
+    <p>This is my first hosted website using GitHub Pages.</p>
   </div>
 
   <div class="card">
-    <h2>My Goal</h2>
-    <p>I want to become a great developer and build awesome projects.</p>
-    <button onclick="alert('Keep going! 🚀')">Click Me</button>
+    <h2>Project 2</h2>
+    <p>More projects coming soon 🚀</p>
   </div>
+</section>
 
+<section id="contact">
   <div class="card">
-    <h2>Extra Feature</h2>
-    <p>Try switching between light and dark mode:</p>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode 🌙</button>
-  </div>
+    <h2>Contact Me</h2>
 
-</div>
+    <!-- REAL FORM (FormSubmit) -->
+    <form action="https://formsubmit.co/YOUR-EMAIL-HERE" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+  </div>
+</section>
 
 <footer>
-  <p>© 2026 My Website</p>
+  <p>© 2026 My Portfolio</p>
 </footer>
 
 <script>
-function toggleDarkMode() {
-  document.body.classList.toggle("dark");
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
+
+// Animation on scroll
+const cards = document.querySelectorAll('.card');
+
+function showCards() {
+  const trigger = window.innerHeight * 0.85;
+
+  cards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+
+    if (top < trigger) {
+      card.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', showCards);
+showCards();
+
+// Simple visitor counter
+let count = localStorage.getItem("visits") || 0;
+count++;
+localStorage.setItem("visits", count);
+console.log("Visits:", count);
 </script>
 
 </body>
